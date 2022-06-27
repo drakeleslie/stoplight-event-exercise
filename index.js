@@ -81,10 +81,25 @@ goButton.addEventListener('mouseleave', () =>{
 //   })
 // });
 
-allButtons.addEventListener('click', function() {
-console.log(event.children.innerText);
-  if(allButtons.slowButton)
-  console.log('test')
+allButtons.addEventListener('click', (event) => {
+
+  if(event.target === controls){
+    return;
+  }
+
+  let status;
+
+  if(event.target === stopButton) {
+    status = stopLight.classList.contains('stop') ? 'on' : 'off';
+  }
+  else if (event.target === slowButton) {
+    status = slowLight.classList.contains('slow') ? 'on' : 'off';
+  }
+  else {
+    status = slowLight.classList.contains('go') ? 'on' : 'off';
+  }
+  console.log(`${event.target.innerText} is ${status}`);
+  
     
   }
   );
